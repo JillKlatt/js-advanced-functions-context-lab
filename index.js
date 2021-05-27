@@ -1,5 +1,75 @@
 /* Your Code Here */
 
+function createEmployeeRecord(employee) {
+    return{
+    firstName: employee[0],
+    familyName: employee[1],
+    title: employee[2],
+    payPerHour: employee[3],
+    timeInEvents: [],
+    timeOutEvents: []
+    }
+
+}
+
+function createEmployeeRecords(employeeArray){
+    // debugger
+    employeeArray.map(array => createEmployeeRecord(array))
+    return employeeArray
+}
+
+function createTimeInEvent(info){
+    //debugger
+    let [date, hour] = info.split(' ')
+    this.timeInEvents.push({
+        type: "TimeIn",
+        hour: parseInt(hour, 10),
+        date
+    })
+    // return updated record 
+    return this
+}
+
+function createTimeOutEvent(info){
+    let [date, hour] = info.split(' ')
+    this.timeOutEvents.push({
+        type: "TimeOut",
+        hour: parseInt(hour, 10),
+        date
+    })
+    return this
+}
+
+// let hoursWorkedOnDate = function(givenDate){
+//     debugger
+//     let inTime = this.timeInEvents.find(date => date === givenDate)
+    
+//     let outTime = this.timeOutEvents.find(date => date === givenDate)
+//     debugger
+//     return (outTime.hour - inTime.hour) / 100
+// }
+
+function hoursWorkedOnDate(givenDate){
+    // debugger
+    let inTime = this.timeInEvents.find(date => date === givenDate)
+    
+    let outTime = this.timeOutEvents.find(date => date === givenDate)
+    return (outTime.hour - inTime.hour) / 100
+}
+
+function wagesEarnedOnDate(givenDate){
+    let hoursWorked = hoursWorkedOnDate(givenDate)
+    let sol = (this.payPerHour * hoursWorked)
+    return sol 
+}
+
+function findEmployeeByFirstName(collection, firstNameString){
+    let employee = collection.find(emp => emp.firstName = firstNameString)
+    // debugger
+    return employee
+
+}
+
 /*
  We're giving you this function. Take a look at it, you might see some usage
  that's new and different. That's because we're avoiding a well-known, but
